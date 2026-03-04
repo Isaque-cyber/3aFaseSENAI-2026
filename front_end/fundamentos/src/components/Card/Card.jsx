@@ -6,6 +6,7 @@ const Card = ({nome, idade, cidade}) => {
             <h3>Nome: {nome}</h3>
             <p>idade: {idade}</p>
             <p>cidade: {cidade}</p>
+           
         </div>
 
     )

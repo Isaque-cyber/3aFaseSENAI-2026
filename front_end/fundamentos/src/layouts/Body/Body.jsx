@@ -1,5 +1,6 @@
 import Card from "../../components/Card/Card"
 import styles from "./Body.module.css"
+import {CardApi} from "../../components/Card/CardApi"
 
 const Body = () => {
 
@@ -19,12 +20,16 @@ const Body = () => {
             nome = { usuario.nome }
             idade = { usuario.idade }
             cidade = { usuario.cidade }
+            
             />
         ))} </div>
+
+        <h3>Usuários vindos da Api</h3>
+        <CardApi/>
       </main>
 
-      <h1>oi</h1>
-      <Card />
+     
+     
     </>
   )
 }
