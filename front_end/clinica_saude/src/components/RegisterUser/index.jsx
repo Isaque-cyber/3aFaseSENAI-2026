@@ -20,7 +20,7 @@ const RegisterUser = () => {
 
     const [isSaving, setIsSaving] = useState(false)
 
-    // validação do match
+    // validação do match 
 
     const isPasswordValid = () => password.length >= 8 && password === confirmPassword
 

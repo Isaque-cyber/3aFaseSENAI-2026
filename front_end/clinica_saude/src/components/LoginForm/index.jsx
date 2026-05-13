@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { toast } from 'react-toastify'
 
@@ -19,11 +19,19 @@ const LoginForm = () => {
 
     const navigate = useNavigate()
 
-    const { login } = useAuth()
+    const { login, user } = useAuth()
 
     // controle do modal
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+
+    // autenticação do usuário (verificação)
+
+    useEffect(() => {
+        if (user) {
+            navigate('/dashboard')
+        }
+    }, [user, navigate])
 
     //validação de login
     const handleLogin = async (e) => {
@@ -112,7 +120,7 @@ const LoginForm = () => {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <RegisterUser/>
+                <RegisterUser />
             </Modal>
 
 
