@@ -1,25 +1,24 @@
 import React from 'react'
-import { CiHospital1 } from "react-icons/ci";
-import PatientsCounter from '../../components/PatientsCounter';
-import ConsultsCounter from '../../components/ConsultsCounter';
-import ExamsCounter from '../../components/ExamsCounter';
+import PatientsCounter from '../../components/counters/PatientsCounter'
+import ConsultsCounter from '../../components/counters/ConsultsCounter'
+import ExamsCounter from '../../components/counters/ExamsCounter'
+
 const Dashboard = () => {
     return (
         <div>
-            <h1 className='text-x1 font-bold text-cyan-800 mb-6'>Dashboard</h1>
+            <h1 className='text-xl font-bold text-cyan-800 mb-6'>Dashboard</h1>
 
-            <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
-                
-
-                <PatientsCounter/>
-                <ConsultsCounter/>
-                <ExamsCounter/>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-2'>
+                <PatientsCounter />
+                <ConsultsCounter />
+                <ExamsCounter />
                 
             </div>
 
+            {/* Lista de pacientes */}
             <h2>Lista de pacientes</h2>
-
-        </div>)
+        </div>
+    )
 }
 
 export default Dashboard

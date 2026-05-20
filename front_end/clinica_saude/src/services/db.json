@@ -49,37 +49,35 @@
         "neighborhood": "centro",
         "reference": "muro branco"
       }
-      
     },
-
     {
-  "id": "2",
-  "fullName": "Maria Oliveira",
-  "gender": "Feminino",
-  "birthdate": "23/07/1992",
-  "cpf": "321.654.987-10",
-  "rg": "45.789.123-6",
-  "maritalStatus": "casada",
-  "phone": "(48)99876-4321",
-  "email": "maria.oliveira@email.com",
-  "birthplace": "Joinville",
-  "emergencyContact": "(48)99111-2233",
-  "allergies": "Lactose, Penicilina",
-  "specialCare": "Necessita acompanhamento cardiológico",
-  "healthInsurance": "Bradesco Saúde",
-  "insuranceNumber": "55443322",
-  "insuranceValidity": "10/09/2028",
-  "address": {
-    "cep": "89200-000",
-    "city": "Joinville",
-    "state": "SC",
-    "street": "Rua das Palmeiras",
-    "number": "145",
-    "complement": "Apartamento 302",
-    "neighborhood": "América",
-    "reference": "Próximo ao supermercado",
-  }
-}
+      "id": "2",
+      "fullName": "Maria da Silva",
+      "gender": "Feminino",
+      "birthdate": "11/12/1980",
+      "cpf": "958.858.858-88",
+      "rg": "958.858.858-88",
+      "maritalStatus": "solteiro",
+      "phone": "(48)85544-5955",
+      "email": "joao@email.com",
+      "birthplace": "Florianópolis",
+      "emergencyContact": "(48)85544-5955",
+      "allergies": "A,B",
+      "specialCare": "cuidado A",
+      "healthInsurance": "unimed",
+      "insuranceNumber": "22121",
+      "insuranceValidity": "15/01/2027",
+      "address": {
+        "cep": "88000-000",
+        "city": "Florianópolis",
+        "state": "SC",
+        "street": "Rua X",
+        "number": "30",
+        "complement": "casa",
+        "neighborhood": "centro",
+        "reference": "muro branco"
+      }
+    }
   ],
   "consults": [
     {

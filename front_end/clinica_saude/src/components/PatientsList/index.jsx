@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { FaUserAlt } from 'react-icons/fa'
-import { link } from "react-router"
-
+import { Link } from "react-router"
 
 const PatientsList = () => {
-
     const [patients, setPatients] = useState([])
-
-    const [seachTerm, setSearchTerm] = useState("")
-
+    const [searchTerm, setSearchTerm] = useState("")
     const [ages, setAges] = useState({})
 
     const calculateAge = (birthdate) => {
@@ -31,42 +27,37 @@ const PatientsList = () => {
                 if (!response) return
 
                 const patientsData = response.data
-                //Calcula a idade de cada paciente e armazena no estado
-                const calculateAges = {}
+
+                // calcula a idade de cada paciente e armazena no estado
+
+                const calculatedAges = {}
                 patientsData.forEach((patient) => {
-                    calculateAges[patient.id] = calculateAge(patient.birthdate)
-
+                    calculatedAges[patient.id] = calculateAge(patient.birthdate)
                 })
-
                 setAges(calculatedAges)
                 setPatients(patientsData)
 
-
             } catch (error) {
-                console.log('Erro ao obter os dados de paciente', error)
+                console.error("Erro ao obter os dados de paciente", error)
             }
-
-        
         }
         fetchPatients()
-    },[])
-
+    }, [])
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value)
     }
 
-
     const filteredPatients = patients.filter((patient) =>
         [patient.fullName, patient.email, patient.phone]
-            .join("")
+            .join(" ")
             .toLowerCase()
-            .includes(setSearchTerm.toLowerCase())
+            .includes(searchTerm.toLowerCase())
     )
 
 
     return (
-        <div>index</div>
+        <div>PatientsList</div>
     )
 }
 

@@ -64,47 +64,57 @@ const SideMenu = () => {
                 <ul className='space-y-3'>
                     <li>
                         <NavLink
-                            to='/dashboard'
+                            to="/dashboard"
                             className={({ isActive }) =>
-                                isActive ? "text-cyan-300 flex gap-2" : "text-white"
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
                             }
                         >
                             <MdDashboard size={20} />
                             {!isCollapsed && <span>Início</span>}
                         </NavLink>
+
+
                     </li>
                     <li>
                         <NavLink
-                            to='/pacientes'
-                          className={({ isActive }) =>
-                                isActive ? "text-cyan-300 flex gap-2" : "text-white"
+                            to="/pacientes"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
                             }
                         >
                             <FaUserPlus size={20} />
                             {!isCollapsed && <span>Pacientes</span>}
                         </NavLink>
+
                     </li>
                     <li>
                         <NavLink
-                            to='/consultas'
+                            to="/consultas"
                             className={({ isActive }) =>
-                                isActive ? "text-cyan-300 flex gap-2" : "text-white"
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
                             }
                         >
-                            <FaCalendarCheck size={20} />
+                            <MdMenu size={20} />
                             {!isCollapsed && <span>Consultas</span>}
                         </NavLink>
+
+
                     </li>
                     <li>
-                        <Link
-                            to='/exames'
+                        <NavLink
+                            to="/exames"
                             className={({ isActive }) =>
-                                isActive ? "text-cyan-300 flex gap-2" : "text-white"
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
                             }
                         >
                             <FaListAlt size={20} />
                             {!isCollapsed && <span>Exames</span>}
-                        </Link>
+                        </NavLink>
+
                     </li>
                 </ul>
             </nav>
@@ -121,7 +131,7 @@ const SideMenu = () => {
                 </button>
             </div>
 
-        </aside>
+        </aside >
     )
 }
 
