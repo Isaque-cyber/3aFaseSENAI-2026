@@ -2,6 +2,7 @@ import React from 'react'
 import PatientsCounter from '../../components/counters/PatientsCounter'
 import ConsultsCounter from '../../components/counters/ConsultsCounter'
 import ExamsCounter from '../../components/counters/ExamsCounter'
+import PatientsList from '../../components/PatientsList'
 
 const Dashboard = () => {
     return (
@@ -16,7 +17,7 @@ const Dashboard = () => {
             </div>
 
             {/* Lista de pacientes */}
-            <h2>Lista de pacientes</h2>
+            <PatientsList/>
         </div>
     )
 }

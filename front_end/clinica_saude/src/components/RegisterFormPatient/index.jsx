@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 
 function RegisterFormPatient() {
@@ -86,6 +87,7 @@ function RegisterFormPatient() {
 
     try {
       await axios.post("http://localhost:3000/patients", formData)
+      
       toast.success("Paciente cadastrado com sucesso!", {
         authClose: 2000,
         hideProgressBar: true
@@ -130,7 +132,9 @@ function RegisterFormPatient() {
      }
 
   return (
-    <div>RegisterFormPatient</div>
+    <form
+    onSubmit{handleSubmit}
+    className='space-y-6 text-gray'></form>
   )
 }
 
