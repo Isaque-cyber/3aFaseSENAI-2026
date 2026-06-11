@@ -78,6 +78,20 @@ const SideMenu = () => {
                     </li>
                     <li>
                         <NavLink
+                            to="/prontuarios"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
+                            }
+                        >
+                            <FaCalendarCheck size={20} />
+                            {!isCollapsed && <span>Prontuários</span>}
+                        </NavLink>
+
+
+                    </li>
+                    <li>
+                        <NavLink
                             to="/pacientes"
                             className={({ isActive }) =>
                                 `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
@@ -85,7 +99,7 @@ const SideMenu = () => {
                             }
                         >
                             <FaUserPlus size={20} />
-                            {!isCollapsed && <span>Pacientes</span>}
+                            {!isCollapsed && <span>Registrar Paciente</span>}
                         </NavLink>
 
                     </li>

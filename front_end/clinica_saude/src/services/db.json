@@ -58,8 +58,8 @@
       "cpf": "958.858.858-88",
       "rg": "958.858.858-88",
       "maritalStatus": "solteiro",
-      "phone": "(48)85544-5955",
-      "email": "joao@email.com",
+      "phone": "(48)98584-9652",
+      "email": "maria@email.com",
       "birthplace": "Florianópolis",
       "emergencyContact": "(48)85544-5955",
       "allergies": "A,B",
@@ -77,6 +77,34 @@
         "neighborhood": "centro",
         "reference": "muro branco"
       }
+    },
+    {
+      "fullName": "tytyjhhhyt",
+      "gender": "masculino",
+      "birthdate": "2026-05-05",
+      "cpf": "546.564.565-46",
+      "rg": "sfgfdsggfs",
+      "maritalStatus": "solteiro(a)",
+      "phone": "(89) 89389-2898",
+      "email": "isaque_r_silva@estudante.sesisenai.org.br",
+      "birthplace": "fgjh",
+      "emergencyContact": "(56) 46656-4656",
+      "allergies": "nbrjfe",
+      "specialCare": "fgfhh",
+      "healthInsurance": "898938948",
+      "insuranceNumber": "565466",
+      "insuranceValidity": "2026-06-04",
+      "address": {
+        "cep": "88058-485",
+        "city": "Florianópolis",
+        "state": "SC",
+        "street": "Servidão Francisca Marques Silva",
+        "number": "4565476",
+        "complement": "fdgggdf",
+        "neighborhood": "Ingleses do Rio Vermelho",
+        "reference": "hdgdgfh"
+      },
+      "id": "L35nCruQcwo"
     }
   ],
   "consults": [
@@ -102,5 +130,6 @@
       "results": "Lorem",
       "id": "1"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
