@@ -472,6 +472,7 @@ function RegisterFormPatient() {
                 </fieldset>
 
 
+
                 {/* Referencia */}
                 <fieldset>
                     <label htmlFor='reference' className='block text-sm font-medium mb-1'>Referencia</label>
