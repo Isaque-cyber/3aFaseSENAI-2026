@@ -2,6 +2,11 @@
   "users": [
     {
       "id": "1",
+      "email": "ioio@email.com",
+      "password": "okokokok"
+    },
+    {
+      "id": "1",
       "email": "joao@email.com",
       "password": "abcd1234"
     },
@@ -27,7 +32,7 @@
       "fullName": "João da Silva",
       "gender": "Masculino",
       "birthdate": "11/12/1980",
-      "cpf": "958.858.858-88",
+      "cpf": "111.111.111-11",
       "rg": "958.858.858-88",
       "maritalStatus": "solteiro",
       "phone": "(48)85544-5955",
@@ -55,7 +60,7 @@
       "fullName": "Maria da Silva",
       "gender": "Feminino",
       "birthdate": "11/12/1980",
-      "cpf": "958.858.858-88",
+      "cpf": "000.000.000-00",
       "rg": "958.858.858-88",
       "maritalStatus": "solteiro",
       "phone": "(48)98584-9652",
@@ -82,7 +87,7 @@
       "fullName": "tytyjhhhyt",
       "gender": "masculino",
       "birthdate": "2026-05-05",
-      "cpf": "546.564.565-46",
+      "cpf": "222.222.222-22",
       "rg": "sfgfdsggfs",
       "maritalStatus": "solteiro(a)",
       "phone": "(89) 89389-2898",
