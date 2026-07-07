@@ -109,32 +109,44 @@ function RegisterFormPatient() {
 
     const maxBirthDate = yesterday.toISOString().split("T")[0]
 
-    // Validação da data de nascimento.
-    // Precisa estar no escopo do componente (não dentro de handleSubmit)
-    // porque também é usada como onBlur do campo de data, no JSX abaixo.
-    const validateDate = () => {
-        if (!formData.birthdate) return true
+
+
+    const validadeDate = () => {
 
         const selectedDate = new Date(formData.birthdate)
         const today = new Date()
         today.setHours(0, 0, 0, 0)
 
         if (selectedDate >= today) {
-            toast.error("A data de nascimento deve ser anterior à data atual.", {
+            toast.error("data ants do nascimento", {
                 autoClose: 2000,
                 hideProgressBar: true
-            })
-            return false
-        }
-        return true
-    }
 
+            })
+
+            return
+        }
+
+    }
     //submit form
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (!validateDate()) return
+        // const selectedDate = new Date(formData.birthdate)
+
+        // const today = new Date()
+        // today.setHours(0, 0, 0, 0)
+
+        // if (selectedDate >= today) {
+        //     toast.error("A data de nascimento deve ser anterior à data atual.", {
+        //         autoClose: 2000,
+        //         hideProgressBar: true
+        //     })
+        //     return
+        // }
+
+
 
         setIsSaving(true)
 
@@ -238,7 +250,6 @@ function RegisterFormPatient() {
                         id='birthdate'
                         value={formData.birthdate}
                         onChange={handleInputChange}
-                        onBlur={validateDate}
                         max={maxBirthDate}
                         required
                         className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none'

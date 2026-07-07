@@ -1,13 +1,15 @@
-import { useEffect } from "react"
-import { useState } from "react"
-import axios from "axios"
-import { toast } from "react-toastify"
-import Modal from "../Modal"
-import { useParams } from "react-router";
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+
+//modal
+
+import Modal from '../Modal'
+
+
 
 function ConsultationForm() {
-    const { id } = useParams();
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState("")
     const [patients, setPatients] = useState([])
     const [selectedPatient, setSelectedPatient] = useState(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -22,38 +24,29 @@ function ConsultationForm() {
         dosagePrecautions: "",
     })
 
-    // Busca Assincrona
+
+    // busca pacientes
 
     useEffect(() => {
-    const fetchPatients = async () => {
-        try {
-            const response = await axios.get("http://localhost:3000/patients");
-            setPatients(response.data);
-
-            if (id) {
-                const patient = response.data.find(
-                    (p) => String(p.id) === String(id)
-                );
-
-                if (patient) {
-                    setSelectedPatient(patient);
-                    setIsModalOpen(true);
-                }
+        const fetchPatients = async () => {
+            try {
+                const response = await axios.get("http://localhost:3000/patients")
+                setPatients(response.data)
+            } catch (error) {
+                console.error("Erro ao obter dados dos pacientes", error)
             }
-        } catch (error) {
-            console.error("Erro ao obter dados dos pacientes", error);
         }
-    };
+        fetchPatients()
+    }, [])
 
-    fetchPatients();
-}, [id]);
 
-    // Funções auxiliares
+    // funções auxiliares
 
-    // Controle de campo de filtro
+    //controle do campo de filtro
+
     const handleSearchChange = (e) => setSearchTerm(e.target.value)
 
-    // Filtro de Pacientes
+    //filtro dos pacientes
 
     const filteredPatients = patients.filter(
         (patient) =>
@@ -61,28 +54,28 @@ function ConsultationForm() {
             patient.id.toString().includes(searchTerm)
     )
 
-    // Seleciona o paciente e abre modal
+    //seleciona o paciente  e abre modal
 
     const handleSelectPatient = (patient) => {
         setSelectedPatient(patient)
         setIsModalOpen(true)
     }
 
-    // Fecha o modal e reseta o valor do paciente
+    //fecha modal e reseta o valor do paciente selecionado
 
     const handleCloseModal = () => {
         setIsModalOpen(false)
         setSelectedPatient(null)
     }
 
-    // Controla os campos do estado FormData dinamicamente
+    //Controla os campos do estado formData dinamicamente
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    // Reseta o form
+    //reseta o form
 
     const resetForm = () => {
         setFormData({
@@ -95,7 +88,7 @@ function ConsultationForm() {
         })
     }
 
-    // Envia os dados
+    //envia os dados
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -109,7 +102,8 @@ function ConsultationForm() {
                 ...formData
             }
 
-            await axios.post('http://localhost:3000/consults', dataToSave)
+            await axios.post("http://localhost:3000/consults", dataToSave)
+
             toast.success("Consulta cadastrada com sucesso!", {
                 autoClose: 2000,
                 hideProgressBar: true
@@ -119,225 +113,233 @@ function ConsultationForm() {
             handleCloseModal()
 
         } catch (error) {
-            console.error("Erro ao cadastrar consulta!", error)
-            const serverMessage = error.response?.data?.message
-            toast.error(serverMessage || "Erro ao cadastrar consulta! Verifique se o json-server (npm run server) está rodando.", {
-                autoClose: 3000,
+            console.error("Erro ao cadastrar consulta!")
+            toast.error("Erro ao cadastrar consulta!", {
+                autoClose: 2000,
                 hideProgressBar: true
             })
-        } finally {
-            setIsSaving(false)
         }
     }
 
+
+
     return (
-        <section className="p-6 text-shadow-gray-800">
+        <section className='p-6 text-gray-800'>
             {/* campo de busca */}
 
-            <div className="mb-6">
-                <label className="block text-sm font-semibold mb-2">
+            <div className='mb-6'>
+                <label className='block text-sm font-semibold mb-2'>
                     Buscar paciente para cadastrar a consulta
                 </label>
                 <input
-                    type="text"
+                    type='text'
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    placeholder="Digite o nome ou o registro do paciente"
-                    className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
+                    placeholder='Digite o nome ou o registro do paciente'
+                    className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none'
                 />
 
             </div>
 
             {/* Lista de pacientes */}
 
-            <ul className="space-y-3">
-                {filteredPatients.map((patient) => (
-                    <li
-                        key={patient.id}
-                        className="p-4 border rounded-lg shadow-sm flex justify-between items-center hover:bg-gray-500 transition"
-                    >
-                        <div>
-                            <p className="text-sm">
-                                <strong>Registro:</strong> {patient.id}
-                            </p>
-                            <p className="text-sm">
-                                <strong>Nome:</strong> {patient.fullName}
-                            </p>
-                            <p className="text-sm">
-                                <strong>Convênio:</strong> {patient.healthInsurance}
-                            </p>
-                        </div>
-
-                        <button
-                            onClick={() => handleSelectPatient(patient)}
-                            className="bg-cyan-700 text-white px-3 py-2 rounded-lg hover:bg-cyan-600 cursor-pointer"
+            <ul className='space-y-3'>
+                {
+                    filteredPatients.map((patient) => (
+                        <li
+                            key={patient.id}
+                            className='p-4 border rounded-lg shadow-sm flex justify-between items-center hover:bg-gray-50 transition'
                         >
-                            Selecionar
-                        </button>
-                    </li>
-                ))}
-            </ul>
-
-            {/* Modal */}
-
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                {selectedPatient && (
-                    <>
-                        <h2 className="text-lg font-bold mb-4 text-cyan-700">
-                            Cadastrar Consulta
-                        </h2>
-
-                        <div className="mb-4 text-sm text-gray-700">
-                            <p>
-                                <strong>Email:</strong> {selectedPatient.email}
-                            </p>
-                            <p>
-                                <strong>Telefone:</strong> {selectedPatient.phone}
-                            </p>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-4">
-
                             <div>
-                                <label
-                                    htmlFor="reason"
-                                    className="block text-sm font-medium mb-1"
-                                >
-                                    Motivo da Consulta
-                                </label>
+                                <p className='text-sm'>
+                                    <strong>Registro: </strong> {patient.id}
+                                </p>
 
-                                <input
-                                    type="text"
-                                    name="reason"
-                                    id="reason"
-                                    value={formData.reason}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
-                                />
+                                <p className='text-sm'>
+                                    <strong>Nome: </strong> {patient.fullName}
+                                </p>
+
+                                <p className='text-sm'>
+                                    <strong>Convênio: </strong> {patient.healthInsurance}
+                                </p>
+
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4">
+                            <button
+                                onClick={() => handleSelectPatient(patient)}
+                                className='bg-cyan-700 text-white px-3 py-2 rounded-lg hover:bg-cyan-600 cursor-pointer'>Selecionar</button>
 
+                        </li>
+                    ))
+                }
+            </ul>
+
+
+            {/*Modal*/}
+            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                {
+                    selectedPatient && (
+                        <>
+                            {/*titulo */}
+                            <h2 className='text-lg font-bold mb-4 text-cyan-700'>
+                                Cadastrar consulta para {selectedPatient.fullName}
+                            </h2>
+
+                            {/*Dados básicos */}
+                            <div className='mb-4 text-sm text-gray-700'>
+                                <p>
+                                    <strong>Email:</strong>{selectedPatient.email}
+                                </p>
+
+                                <p>
+                                    <strong>Telefone:</strong>{selectedPatient.phone}
+                                </p>
+
+
+                            </div>
+
+                            {/*fORMULARIO */}
+                            <form onSubmit={handleSubmit} className='space-y-4'>
                                 <div>
-                                    <label
-                                        htmlFor="date"
-                                        className="block text-sm font-medium mb-1"
-                                    >
-                                        Data
+                                    <label htmlFor="reason " className='block text-sm font-medium  mb-1'>
+                                        motivo da consulta
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name='reason'
+                                        id='reason'
+                                        value={formData.reason}
+                                        onChange={handleInputChange}
+                                        required
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none'
+                                    />
+                                </div>
+
+
+                                <div className='grid grid-cols-2 gap-4'>
+
+                                    {/*Data */}
+                                <div>
+                                    <label htmlFor="date " className='block text-sm font-medium  mb-1'>
+                                        Data da consulta
                                     </label>
 
                                     <input
                                         type="date"
-                                        name="date"
-                                        id="date"
+                                        name='date'
+                                        id='date'
                                         value={formData.date}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
-                                    />
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none'
+                                        />
                                 </div>
 
+
+                                    {/*Horário */}
                                 <div>
-                                    <label
-                                        htmlFor="time"
-                                        className="block text-sm font-medium mb-1"
-                                    >
-                                        Horário
+                                    <label htmlFor="time " className='block text-sm font-medium  mb-1'>
+                                       Horário
                                     </label>
 
                                     <input
                                         type="time"
-                                        name="time"
-                                        id="time"
+                                        name='time'
+                                        id='time'
                                         value={formData.time}
                                         onChange={handleInputChange}
                                         required
-                                        className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none'
+                                        />
+                                </div>
+
+                                    </div> {/*Fechamento grid */}
+                                   
+
+                                    {/*descrição do problema */}
+                                <div>
+                                    <label htmlFor="description " className='block text-sm font-medium  mb-1'>
+                                       descrição do problema
+                                    </label>
+
+                                    <textarea
+                                        name='description'
+                                        id='description'
+                                        value={formData.description}
+                                        onChange={handleInputChange}
+                                        required
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none resize-none'
                                     />
                                 </div>
 
-                            </div>
 
-                            <div>
-                                <label
-                                    htmlFor="description"
-                                    className="block text-sm font-medium mb-1"
-                                >
-                                    Descrição do Problema
-                                </label>
+                                    {/*Medicação receitada */}
+                                <div>
+                                    <label htmlFor="medication " className='block text-sm font-medium  mb-1'>
+                                       Medicação receitada
+                                    </label>
 
-                                <textarea
-                                    name="description"
-                                    id="description"
-                                    value={formData.description}
-                                    rows={3}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
-                                />
-                            </div>
+                                    <textarea
+                                        type='text'
+                                        name='medication'
+                                        id='medication'
+                                        value={formData.medication}
+                                        onChange={handleInputChange}
+                                        required
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none resize-none'
+                                    />
+                                </div>
 
-                            <div>
-                                <label
-                                    htmlFor="medication"
-                                    className="block text-sm font-medium mb-1"
-                                >
-                                    Medicação receitada
-                                </label>
 
-                                <input
-                                    type="text"
-                                    name="medication"
-                                    id="medication"
-                                    value={formData.medication}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
-                                />
-                            </div>
+                                    {/*Dosagem e precauções  */}
+                                <div>
+                                    <label htmlFor="dosagePrecautions " className='block text-sm font-medium  mb-1'>
+                                       Dosagem e precauções
+                                    </label>
 
-                            <div>
-                                <label
-                                    htmlFor="dosagePrecautions"
-                                    className="block text-sm font-medium mb-1"
-                                >
-                                    Dosagem e Preucações
-                                </label>
-
-                                <input
-                                    type="text"
-                                    name="dosagePrecautions"
-                                    id="dosagePrecautions"
-                                    value={formData.dosagePrecautions}
-                                    onChange={handleInputChange}
-                                    required
-                                    className="w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none"
-                                />
-                            </div>
-
-                            <div className="flex justify-end gap-3 pt-4">
-                                <button
-                                    type="button"
+                                    <textarea
+                                        type='text'
+                                        name='dosagePrecautions'
+                                        id='dosagePrecautions'
+                                        value={formData.dosagePrecautions}
+                                        onChange={handleInputChange}
+                                        required
+                                        className='w-full border p-2 rounded-lg focus:ring-2 focus:ring-cyan-600 outline-none resize-none'
+                                    />
+                                </div>
+                                
+                                {/*Botões */}
+                                <div className='flex justify-end gap-3 pt-4'>
+                                    <button 
+                                    type='button'
                                     onClick={handleCloseModal}
+                                    className='px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition'>
+                                        Fechar
+                                    </button>
                                     
-                                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition"
-                                >
-                                    Fechar
-                                </button>
-                                <button
-                                    type="submit"
-                                    disabled={isSaving}
-                                    className="px-4 py-2 bg-cyan-700 text-white rounded-lg hover:bg-cyan-600 disabled:opacity-50 transition"
-                                >
-                                    {isSaving ? "Salvando..." : "Salvar"}
-                                </button>
-                            </div>
+                                    <button 
+                                    type='submit'
+                                    onClick={isSaving}
+                                    className='px-4 py-2 bg-cyan-700 text-white rounded-lg hover:bg-cyan-600 disabled:opacity-50 transition'>
 
-                        </form>
-                    </>
-                )}
+                                    {isSaving ? "Salvando..." : "Salvar"}
+                                
+                                    </button>
+                                    
+
+                                </div>
+
+
+
+                            </form>
+
+                        </>
+                    )
+                }
             </Modal>
+
+
         </section>
     )
 }

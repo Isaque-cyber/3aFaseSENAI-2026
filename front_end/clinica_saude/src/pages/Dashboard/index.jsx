@@ -1,3 +1,4 @@
+import React from 'react'
 import PatientsCounter from '../../components/counters/PatientsCounter'
 import ConsultsCounter from '../../components/counters/ConsultsCounter'
 import ExamsCounter from '../../components/counters/ExamsCounter'

@@ -2,6 +2,11 @@
   "users": [
     {
       "id": "1",
+      "email": "ioio@email.com",
+      "password": "okokokok"
+    },
+    {
+      "id": "1",
       "email": "joao@email.com",
       "password": "abcd1234"
     },
@@ -19,6 +24,11 @@
       "email": "luciano3@gmail.com",
       "password": "asdf1234",
       "id": "GBMuy9BRnQc"
+    },
+    {
+      "email": "julio_gaspareto@estudante.sesisenai.org.br",
+      "password": "12345678",
+      "id": "B7NaKaMKj_I"
     }
   ],
   "patients": [
@@ -27,7 +37,7 @@
       "fullName": "João da Silva",
       "gender": "Masculino",
       "birthdate": "11/12/1980",
-      "cpf": "958.858.858-88",
+      "cpf": "111.111.111-11",
       "rg": "958.858.858-88",
       "maritalStatus": "solteiro",
       "phone": "(48)85544-5955",
@@ -55,7 +65,7 @@
       "fullName": "Maria da Silva",
       "gender": "Feminino",
       "birthdate": "11/12/1980",
-      "cpf": "958.858.858-88",
+      "cpf": "000.000.000-00",
       "rg": "958.858.858-88",
       "maritalStatus": "solteiro",
       "phone": "(48)98584-9652",
@@ -79,32 +89,32 @@
       }
     },
     {
-      "fullName": "Isaac Dantas",
+      "fullName": "tytyjhhhyt",
       "gender": "masculino",
-      "birthdate": "2008-02-19",
-      "cpf": "219.873.847-82",
-      "rg": "794711",
+      "birthdate": "2026-05-05",
+      "cpf": "222.222.222-22",
+      "rg": "sfgfdsggfs",
       "maritalStatus": "solteiro(a)",
-      "phone": "(95) 90648-6905",
-      "email": "paocomepa@gmail.com",
-      "birthplace": "Maconheiro",
-      "emergencyContact": "(43) 53535-3453",
-      "allergies": "Macaco prego",
-      "specialCare": "AUTISMO EM TERCEIRO GRAu",
-      "healthInsurance": "UNIDADE DE SAUDE",
-      "insuranceNumber": "930920402",
-      "insuranceValidity": "2040-02-19",
+      "phone": "(89) 89389-2898",
+      "email": "isaque_r_silva@estudante.sesisenai.org.br",
+      "birthplace": "fgjh",
+      "emergencyContact": "(56) 46656-4656",
+      "allergies": "nbrjfe",
+      "specialCare": "fgfhh",
+      "healthInsurance": "898938948",
+      "insuranceNumber": "565466",
+      "insuranceValidity": "2026-06-04",
       "address": {
-        "cep": "88060-183",
+        "cep": "88058-485",
         "city": "Florianópolis",
         "state": "SC",
-        "street": "Avenida das Constelações",
-        "number": "",
-        "complement": "(Prq Res R Vermelho)",
-        "neighborhood": "São João do Rio Vermelho",
-        "reference": "CASSASAASSASSA"
+        "street": "Servidão Francisca Marques Silva",
+        "number": "4565476",
+        "complement": "fdgggdf",
+        "neighborhood": "Ingleses do Rio Vermelho",
+        "reference": "hdgdgfh"
       },
-      "id": "s8L0oQq-Qig"
+      "id": "L35nCruQcwo"
     }
   ],
   "consults": [
@@ -120,28 +130,37 @@
     },
     {
       "patientId": "1",
-      "reason": "asdasdassdsadasd",
-      "date": "2026-06-03",
-      "time": "23:22",
-      "description": "sadsada",
-      "medication": "dasdsadasd",
-      "dosagePrecautions": "asdadasdas",
-      "id": "h2Ih3m4fiE0"
+      "reason": "Braço quebrado",
+      "date": "2026-07-15",
+      "time": "22:02",
+      "description": "Caiu de bicicleta",
+      "medication": "Dipirona",
+      "dosagePrecautions": "2,5 ml",
+      "id": "U-C5UqSHKAE"
     },
     {
       "patientId": "1",
-      "reason": "sdadasda",
-      "date": "2026-06-23",
-      "time": "23:13",
-      "description": "dadassdasd",
-      "medication": "asdadas",
-      "dosagePrecautions": "dasdasdadsadas",
-      "id": "o3eKwo3VqCk"
+      "reason": "Braço quebrado",
+      "date": "0034-03-04",
+      "time": "04:44",
+      "description": "434vffdg",
+      "medication": "gfgffgds",
+      "dosagePrecautions": "fggfdsgfsdgf",
+      "id": "oaayVY9LDzg"
+    },
+    {
+      "patientId": "1",
+      "reason": "Braço quebrado",
+      "date": "2027-04-12",
+      "time": "04:03",
+      "description": "Caiu de Bicicleta",
+      "medication": "Dipirona",
+      "dosagePrecautions": "2,5 ml",
+      "id": "aakw9RlZynA"
     }
   ],
   "exams": [
     {
-      "patientId": "2",
       "name": "Lorem",
       "date": "12-07-2025",
       "time": "15:20",
@@ -150,78 +169,7 @@
       "documentUrl": "https://docexemplo.com",
       "results": "Lorem",
       "id": "1"
-    },
-    {
-      "patientId": "1",
-      "name": "",
-      "date": "2026-06-19",
-      "time": "20:56",
-      "type": "sadsadsad",
-      "laboratory": "asdadad",
-      "documentUrl": "https://docexemplo.com",
-      "results": "",
-      "id": "SvS-RQz0sIY"
-    },
-    {
-      "patientId": "1",
-      "name": "",
-      "date": "2026-06-09",
-      "time": "17:59",
-      "type": "zcxzc",
-      "laboratory": "zxczczx",
-      "documentUrl": "Captura de tela 2026-04-23 215455.png",
-      "results": "",
-      "id": "S9og23X2pQg"
-    },
-    {
-      "patientId": "1",
-      "name": "",
-      "date": "2026-06-19",
-      "time": "00:10",
-      "type": "dasdasdas",
-      "laboratory": "sasdadas",
-      "documentUrl": "Captura de tela 2026-04-23 215455.png",
-      "results": "",
-      "status": "Concluído",
-      "id": "Cz4sg5PbJOI"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json",
-  "posts": [
-    {
-      "id": "1",
-      "image": "https://placehold.co/300x200",
-      "title": "a title",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "views": 100
-    },
-    {
-      "id": "2",
-      "image": "https://placehold.co/300x200",
-      "title": "another title",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "views": 200
-    },
-    {
-      "id": "3",
-      "image": "https://placehold.co/300x200",
-      "title": "a title",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "views": 50
-    },
-    {
-      "id": "4",
-      "image": "https://placehold.co/300x200",
-      "title": "a title",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "views": 70
-    },
-    {
-      "id": "5",
-      "image": "https://placehold.co/300x200",
-      "title": "a title",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "views": 270
-    }
-  ]
+  "$schema": "./node_modules/json-server/schema.json"
 }
