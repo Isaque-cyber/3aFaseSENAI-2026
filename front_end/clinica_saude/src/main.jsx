@@ -17,6 +17,7 @@ import DashboardLayout from './layouts/DashboardLayout';
 import MedicalRecordList from './components/MedicalRecordList';
 import RegisterFormPatient from './components/RegisterFormPatient';
 import ConsultationForm from './components/ConsultationForm';
+import PatientDetails from './components/PatientDetails';
 
 
 const router = createBrowserRouter([
@@ -31,13 +32,13 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    children: [
-      { path: "/dashboard", element: <Dashboard /> },
-      { path: "/prontuarios", element: <MedicalRecordList /> },
-      { path: "/pacientes", element: <RegisterFormPatient /> },
-      { path: "/consultas", element: <ConsultationForm /> },
-
-    ]
+  children: [
+  { path: "/dashboard", element: <Dashboard /> },
+  { path: "/prontuarios", element: <MedicalRecordList /> },
+  { path: "/pacientes", element: <RegisterFormPatient /> },
+  { path: "/consultas", element: <ConsultationForm /> },
+  { path: "/paciente/:id", element: <PatientDetails /> },
+]
   }
 ]);
 
