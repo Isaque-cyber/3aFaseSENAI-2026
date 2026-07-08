@@ -9,7 +9,8 @@ import {
 import {
     FaUserPlus,
     FaListAlt,
-    FaCalendarCheck
+    FaCalendarCheck,
+    FaPills
 } from 'react-icons/fa'
 
 import { useAuth } from '../../contexts/AuthContext'
@@ -127,6 +128,19 @@ const SideMenu = () => {
                         >
                             <FaListAlt size={20} />
                             {!isCollapsed && <span>Exames</span>}
+                        </NavLink>
+
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/estoque"
+                            className={({ isActive }) =>
+                                `flex gap-2 hover:text-cyan-300 ${isActive ? "text-cyan-300" : "text-white"
+                                }`
+                            }
+                        >
+                            <FaPills size={20} />
+                            {!isCollapsed && <span>Estoque</span>}
                         </NavLink>
 
                     </li>
