@@ -257,20 +257,87 @@ vazia (sem favorito). O React alterna entre elas baseado no estado `favorite`.
 
 ---
 
+## Feature 4 — Página de Cadastro de Exames
+
+### Descrição
+O menu lateral (`SideMenu`) já continha um link para `/exames`, mas essa rota
+não existia no `main.jsx` e o componente responsável por cadastrar exames
+nunca havia sido criado neste projeto — diferente do projeto base do
+professor, que já possuía um `ExamsForm` funcional. Isso fazia com que o
+menu "Exames" não levasse a lugar nenhum.
+
+O `PatientDetails` já sabia **exibir, editar e excluir** exames de um
+paciente, mas não havia nenhuma tela para **cadastrar** um exame novo — por
+isso a lista de exames de qualquer paciente ficava sempre vazia.
+
+### Solução implementada
+Foi criado o componente `ExamsForm`, seguindo exatamente o mesmo padrão já
+usado no `ConsultationForm` do projeto (busca de paciente → seleção via
+modal → formulário de cadastro), para manter consistência visual e de
+código com o restante do sistema:
+
+```js
+const filteredPatients = patients.filter(
+    (patient) =>
+        patient.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        patient.id.toString().includes(searchTerm)
+)
+
+const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!selectedPatient) return
+
+    const dataToSave = {
+        patientId: selectedPatient.id,
+        ...formData
+    }
+
+    await axios.post("http://localhost:3000/exams", dataToSave)
+    toast.success("Exame cadastrado com sucesso!")
+    resetForm()
+    handleCloseModal()
+}
+```
+
+O campo `patientId` é o vínculo entre o exame e o paciente — é exatamente
+esse campo que o `PatientDetails` usa para filtrar e exibir os exames de
+cada paciente (`e.patientId === id`). Sem essa tela, não existia como
+gravar esse vínculo.
+
+Em seguida, a rota foi registrada no `main.jsx`, no mesmo padrão das
+demais rotas privadas:
+
+```js
+import ExamsForm from './components/ExamsForm';
+// ...
+{ path: "/exames", element: <ExamsForm /> },
+```
+
+### Por que essa abordagem preserva o resto do projeto
+Nenhum arquivo existente foi alterado em sua lógica — apenas duas linhas
+foram adicionadas ao `main.jsx` (import + rota) e um componente novo foi
+criado em sua própria pasta (`components/ExamsForm`). As telas de
+`PatientDetails`, `ConsultationForm`, `PatientsList`, dark mode, favoritos
+e ordenação continuam exatamente como estavam.
+
+---
+
 ## Conclusão
 
-As quatro features foram implementadas com sucesso no projeto Clínica Saúde,
-respeitando a estrutura original do professor e sem criar novos componentes.
+As features foram implementadas com sucesso no projeto Clínica Saúde,
+respeitando a estrutura original do professor.
 
 Durante o desenvolvimento foram identificados e resolvidos problemas reais:
 - **Incompatibilidade do json-server v1 beta** com filtros por query param → resolvido filtrando no frontend
 - **Formatos de data inconsistentes** no banco → resolvido com função `parseDate` que normaliza antes de comparar
+- **Página de Exames inexistente** apesar do link já estar no menu → resolvido criando o `ExamsForm`, no mesmo padrão do `ConsultationForm`
 
 ### Resumo das features entregues
 
-| # | Feature | Arquivo modificado |
+| # | Feature | Arquivo modificado/criado |
 |---|---|---|
 | 1 | Busca avançada por nome, CPF, email, telefone e convênio | `PatientsList/index.jsx`, `MedicalRecordList/index.jsx` |
 | 2 | Dark Mode com persistência no localStorage | `DashboardLayout.jsx`, `index.css` |
 | 3 | Ordenação de consultas e exames por data | `PatientDetails/index.jsx` |
+| 4 | Cadastro de Exames (nova tela + rota) | `ExamsForm/index.jsx` (novo), `main.jsx` |
 | Nova | Sistema de pacientes favoritos com localStorage | `PatientDetails/index.jsx` |
